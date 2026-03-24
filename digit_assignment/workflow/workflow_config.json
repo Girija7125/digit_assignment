@@ -1,0 +1,80 @@
+{
+  "RequestInfo": {
+    "apiId": "Rainmaker",
+    "action": "",
+    "did": 1,
+    "key": "",
+    "msgId": "20170310130900|en_IN",
+    "requesterId": "",
+    "ts": 1513579888683,
+    "ver": ".01",
+    "authToken": ""
+  },
+  "BusinessServices": [
+    {
+      "tenantId": "pg",
+      "businessService": "advocate-registration",
+      "business": "digit_assignment",
+      "businessServiceSla": 432000000,
+      "states": [
+        {
+          "sla": null,
+          "state": null,
+          "applicationStatus": null,
+          "docUploadRequired": false,
+          "isStartState": true,
+          "isTerminateState": false,
+          "isStateUpdatable": true,
+          "actions": [
+            {
+              "action": "APPLY",
+              "nextState": "PENDINGVERIFICATION",
+              "roles": ["CITIZEN", "ADVOCATE"]
+            }
+          ]
+        },
+        {
+          "sla": 432000000,
+          "state": "PENDINGVERIFICATION",
+          "applicationStatus": "PENDINGVERIFICATION",
+          "docUploadRequired": false,
+          "isStartState": false,
+          "isTerminateState": false,
+          "isStateUpdatable": false,
+          "actions": [
+            {
+              "action": "APPROVE",
+              "nextState": "APPROVED",
+              "roles": ["NYAY_MITRA", "EMPLOYEE"]
+            },
+            {
+              "action": "REJECT",
+              "nextState": "REJECTED",
+              "roles": ["NYAY_MITRA", "EMPLOYEE"]
+            }
+          ]
+        },
+        {
+          "sla": null,
+          "state": "APPROVED",
+          "applicationStatus": "APPROVED",
+          "docUploadRequired": false,
+          "isStartState": false,
+          "isTerminateState": true,
+          "isStateUpdatable": false,
+          "actions": []
+        },
+        {
+          "sla": null,
+          "state": "REJECTED",
+          "applicationStatus": "REJECTED",
+          "docUploadRequired": false,
+          "isStartState": false,
+          "isTerminateState": true,
+          "isStateUpdatable": false,
+          "actions": []
+        }
+      ]
+    }
+  ]
+}

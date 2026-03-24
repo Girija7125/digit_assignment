@@ -1,0 +1,40 @@
+ServiceMaps:
+  serviceName: advocate-registration-service
+  version: 1.0
+  mappings:
+
+  - topic: save-advocate
+    configKey: INDEX
+    indexes:
+    - name: advocate
+      type: general
+      id: $.advocates.*.id
+      isBulk: true
+      timeStampField: $.advocates.*.auditDetails.createdTime
+      jsonPath: $.advocates.*
+      customJsonMapping:
+        id: $.advocates.*.id
+        tenantId: $.advocates.*.tenantId
+        applicationNumber: $.advocates.*.applicationNumber
+        userType: $.advocates.*.userType
+        mobileNumber: $.advocates.*.mobileNumber
+        status: $.advocates.*.status
+        barRegistrationNumber: $.advocates.*.barRegistrationNumber
+        createdTime: $.advocates.*.auditDetails.createdTime
+        lastModifiedTime: $.advocates.*.auditDetails.lastModifiedTime
+
+  - topic: update-advocate
+    configKey: INDEX
+    indexes:
+    - name: advocate
+      type: general
+      id: $.advocates.*.id
+      isBulk: true
+      timeStampField: $.advocates.*.auditDetails.lastModifiedTime
+      jsonPath: $.advocates.*
+      customJsonMapping:
+        id: $.advocates.*.id
+        tenantId: $.advocates.*.tenantId
+        applicationNumber: $.advocates.*.applicationNumber
+        status: $.advocates.*.status
+        lastModifiedTime: $.advocates.*.auditDetails.lastModifiedTime

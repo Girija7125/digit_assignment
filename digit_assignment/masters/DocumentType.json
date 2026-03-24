@@ -1,0 +1,21 @@
+{
+  "tenantId": "pg",
+  "moduleName": "Advocate",
+  "DocumentType": [
+    {
+      "code": "BAR_COUNCIL_ID",
+      "name": "Bar Council ID",
+      "isActive": true
+    },
+    {
+      "code": "ID_PROOF",
+      "name": "ID Proof",
+      "isActive": true
+    },
+    {
+      "code": "ADDRESS_PROOF",
+      "name": "Address Proof",
+      "isActive": true
+    }
+  ]
+}

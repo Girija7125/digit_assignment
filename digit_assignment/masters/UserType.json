@@ -1,0 +1,16 @@
+{
+  "tenantId": "pg",
+  "moduleName": "Advocate",
+  "UserType": [
+    {
+      "code": "ADVOCATE",
+      "name": "Advocate",
+      "isActive": true
+    },
+    {
+      "code": "ADVOCATE_CLERK",
+      "name": "Advocate Clerk",
+      "isActive": true
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "info": {
+    "name": "Advocate Registration APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Advocate",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": { "raw": "http://localhost:8080/digit-assignment/advocate/v1/_create" },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"RequestInfo\": {\n    \"apiId\": \"Rainmaker\",\n    \"ver\": \".01\",\n    \"ts\": null,\n    \"action\": \"_create\",\n    \"msgId\": \"20170310130900|en_IN\",\n    \"authToken\": \"\",\n    \"userInfo\": {\n      \"uuid\": \"user-001\",\n      \"userName\": \"testuser\"\n    }\n  },\n  \"advocates\": [\n    {\n      \"tenantId\": \"pg\",\n      \"userType\": \"ADVOCATE\",\n      \"mobileNumber\": \"9876543210\",\n      \"barRegistrationNumber\": \"BAR123456\",\n      \"isActive\": true,\n      \"workflow\": {\n        \"action\": \"APPLY\",\n        \"comments\": \"Applying for advocate registration\"\n      }\n    }\n  ]\n}"
+        }
+      }
+    },
+    {
+      "name": "Create Advocate Clerk",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": { "raw": "http://localhost:8080/digit-assignment/advocate/v1/_create" },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"RequestInfo\": {\n    \"apiId\": \"Rainmaker\",\n    \"ver\": \".01\",\n    \"ts\": null,\n    \"action\": \"_create\",\n    \"msgId\": \"20170310130900|en_IN\",\n    \"authToken\": \"\",\n    \"userInfo\": {\n      \"uuid\": \"user-002\",\n      \"userName\": \"clerkuser\"\n    }\n  },\n  \"advocates\": [\n    {\n      \"tenantId\": \"pg\",\n      \"userType\": \"ADVOCATE_CLERK\",\n      \"mobileNumber\": \"9123456789\",\n      \"advocateId\": \"advocate-id-here\",\n      \"isActive\": true,\n      \"workflow\": {\n        \"action\": \"APPLY\",\n        \"comments\": \"Applying for advocate clerk registration\"\n      }\n    }\n  ]\n}"
+        }
+      }
+    },
+    {
+      "name": "Search Advocates",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": { "raw": "http://localhost:8080/digit-assignment/advocate/v1/_search" },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"RequestInfo\": {\n    \"apiId\": \"Rainmaker\",\n    \"ver\": \".01\",\n    \"ts\": null,\n    \"authToken\": \"\"\n  },\n  \"criteria\": [\n    {\n      \"tenantId\": \"pg\"\n    }\n  ],\n  \"pagination\": {\n    \"limit\": 10,\n    \"offset\": 0\n  }\n}"
+        }
+      }
+    },
+    {
+      "name": "Search by Status",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": { "raw": "http://localhost:8080/digit-assignment/advocate/v1/_search" },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"RequestInfo\": {\n    \"apiId\": \"Rainmaker\",\n    \"ver\": \".01\",\n    \"ts\": null,\n    \"authToken\": \"\"\n  },\n  \"criteria\": [\n    {\n      \"tenantId\": \"pg\",\n      \"status\": \"PENDINGVERIFICATION\"\n    }\n  ],\n  \"pagination\": {\n    \"limit\": 10,\n    \"offset\": 0\n  }\n}"
+        }
+      }
+    },
+    {
+      "name": "Approve Advocate",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": { "raw": "http://localhost:8080/digit-assignment/advocate/v1/_update" },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"RequestInfo\": {\n    \"apiId\": \"Rainmaker\",\n    \"ver\": \".01\",\n    \"ts\": null,\n    \"authToken\": \"\",\n    \"userInfo\": {\n      \"uuid\": \"nyaymitra-001\",\n      \"userName\": \"nyaymitra\"\n    }\n  },\n  \"advocates\": [\n    {\n      \"id\": \"REPLACE_WITH_ADVOCATE_ID\",\n      \"tenantId\": \"pg\",\n      \"workflow\": {\n        \"action\": \"APPROVE\",\n        \"comments\": \"BAR council ID verified. Registration approved.\"\n      }\n    }\n  ]\n}"
+        }
+      }
+    },
+    {
+      "name": "Reject Advocate",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": { "raw": "http://localhost:8080/digit-assignment/advocate/v1/_update" },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"RequestInfo\": {\n    \"apiId\": \"Rainmaker\",\n    \"ver\": \".01\",\n    \"ts\": null,\n    \"authToken\": \"\",\n    \"userInfo\": {\n      \"uuid\": \"nyaymitra-001\",\n      \"userName\": \"nyaymitra\"\n    }\n  },\n  \"advocates\": [\n    {\n      \"id\": \"REPLACE_WITH_ADVOCATE_ID\",\n      \"tenantId\": \"pg\",\n      \"workflow\": {\n        \"action\": \"REJECT\",\n        \"comments\": \"BAR council ID not valid. Please re-register with correct ID.\"\n      }\n    }\n  ]\n}"
+        }
+      }
+    }
+  ]
+}

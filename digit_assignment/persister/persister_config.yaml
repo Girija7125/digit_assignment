@@ -1,0 +1,41 @@
+serviceMaps:
+  serviceName: advocate-registration-service
+  mappings:
+
+  - version: 1.0
+    description: Persists advocate registration details
+    fromTopic: save-advocate
+    isTransaction: true
+    queryMaps:
+
+    - query: INSERT INTO eg_advocate (id, tenant_id, application_number, individual_id, bar_registration_number, advocate_id, user_type, mobile_number, is_active, status, created_by, last_modified_by, created_time, last_modified_time) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+      basePath: advocates.*
+      jsonMaps:
+        - jsonPath: $.advocates.*.id
+        - jsonPath: $.advocates.*.tenantId
+        - jsonPath: $.advocates.*.applicationNumber
+        - jsonPath: $.advocates.*.individualId
+        - jsonPath: $.advocates.*.barRegistrationNumber
+        - jsonPath: $.advocates.*.advocateId
+        - jsonPath: $.advocates.*.userType
+        - jsonPath: $.advocates.*.mobileNumber
+        - jsonPath: $.advocates.*.isActive
+        - jsonPath: $.advocates.*.status
+        - jsonPath: $.advocates.*.auditDetails.createdBy
+        - jsonPath: $.advocates.*.auditDetails.lastModifiedBy
+        - jsonPath: $.advocates.*.auditDetails.createdTime
+        - jsonPath: $.advocates.*.auditDetails.lastModifiedTime
+
+  - version: 1.0
+    description: Updates advocate registration status
+    fromTopic: update-advocate
+    isTransaction: true
+    queryMaps:
+
+    - query: UPDATE eg_advocate SET status=?, last_modified_by=?, last_modified_time=? WHERE id=?;
+      basePath: advocates.*
+      jsonMaps:
+        - jsonPath: $.advocates.*.status
+        - jsonPath: $.advocates.*.auditDetails.lastModifiedBy
+        - jsonPath: $.advocates.*.auditDetails.lastModifiedTime
+        - jsonPath: $.advocates.*.id

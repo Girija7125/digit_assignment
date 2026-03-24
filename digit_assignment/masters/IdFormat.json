@@ -1,0 +1,14 @@
+{
+  "tenantId": "pg",
+  "moduleName": "Advocate",
+  "IdFormat": [
+    {
+      "format": "ADVOC-[SEQ_ADVOC_[TENANT_ID]]-[cy:yyyy]",
+      "idname": "advocate.applicationNumber"
+    },
+    {
+      "format": "ADVOC-CLERK-[SEQ_ADVOC_CLERK_[TENANT_ID]]-[cy:yyyy]",
+      "idname": "advocate.clerk.applicationNumber"
+    }
+  ]
+}
